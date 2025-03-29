@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .db import models
+from app.db import models
 from app.db.database import engine
 from app.api.routers import router as tron_router
 

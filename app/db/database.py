@@ -1,12 +1,26 @@
+#import os
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
+# from dotenv import load_dotenv
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+from app.config import settings
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, expire_on_commit=False)
+DB_URL = settings.DB_URL
+engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
+SessionLocal  = sessionmaker(autocommit=False, autoflush=False, bind=engine, expire_on_commit=False)
+
+
+# load_dotenv()
+#
+# # Проверяем наличие переменной окружения DB_DPATH
+# db_dpath = os.getenv("DATABASE_URL")
+# if db_dpath is None:
+#     raise ValueError("Переменная окружения DATABASE_URL не определена в файле .env")
+#
+# engine = create_engine(f"sqlite:///./{db_dpath}", connect_args={"check_same_thread": False})
+# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, expire_on_commit=False)
 
 Base = declarative_base()
 

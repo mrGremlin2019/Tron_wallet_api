@@ -1,6 +1,6 @@
-from fastapi import FastAPI, HTTPException, APIRouter
-from .. import services
-from ..api import schemas
+from fastapi import HTTPException, APIRouter
+from app import services
+from app.api import schemas
 from app.db.database import get_db
 from app.db.db_client import DBClient
 
