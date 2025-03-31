@@ -54,6 +54,7 @@ class DBClient:
             self.db.rollback()
             raise ValueError(f"Failed to create wallet query: {str(e)}")
 
+
     def get_queries(self, skip: int = 0, limit: int = 10) -> list[dict]:
         """Получает список запросов из БД с пагинацией.
 
